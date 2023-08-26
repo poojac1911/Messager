@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/startFragment">
+
+    <fragment
+        android:id="@+id/startFragment"
+        android:name="com.example.messager.StartFragment"
+        android:label="Messages"
+        tools:layout="@layout/fragment_start">
+        <action
+            android:id="@+id/action_startFragment_to_NewCreationFragment"
+            app:destination="@id/NewCreationFragment" />
+        <action
+            android:id="@+id/action_startFragment_to_MessageFragment"
+            app:destination="@id/MessageFragment"/>
+        <action
+            android:id="@+id/action_startFragment_to_infoFragment"
+            app:destination="@id/infoFragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/NewCreationFragment"
+        android:name="com.example.messager.NewCreationFragment"
+        android:label="New Conversation"
+        tools:layout="@layout/fragment_new_creation">
+        <action
+            android:id="@+id/action_NewCreationFragment_to_GroupCreationFragment"
+            app:destination="@id/GroupCreationFragment" />
+        <action
+            android:id="@+id/action_NewCreationFragment_to_MessageFragment"
+            app:destination="@id/MessageFragment" />
+        <action
+            android:id="@+id/action_NewCreationFragment_to_startFragment"
+            app:destination="@id/startFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/GroupCreationFragment"
+        android:label="Group Creation"
+        android:name="com.example.messager.GroupCreationFragment"
+        tools:layout="@layout/fragment_group_creation">
+        <action
+            android:id="@+id/action_GroupCreationFragment_to_startFragment"
+            app:destination="@id/startFragment" />
+        <action
+            android:id="@+id/action_GroupCreationFragment_to_NewCreationFragment"
+            app:destination="@id/NewCreationFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/MessageFragment"
+        android:label="Message"
+        android:name="com.example.messager.MessageFragment"
+        tools:layout="@layout/fragment_message_compose">
+        <argument
+            android:name="groupId"
+            app:argType="long" />
+        <argument
+            android:name="groupName"
+            app:argType="string" />
+        <argument
+            android:name="groupDescription"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_MessageFragment_to_startFragment"
+            app:destination="@id/startFragment" />
+        <action
+            android:id="@+id/action_MessageFragment_to_infoFragment"
+            app:destination="@id/infoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.messager.LoginFragment"
+        android:label="LoginFragment"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_loginFragment_to_startFragment"
+            app:destination="@id/startFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/infoFragment"
+        android:name="com.example.messager.InfoFragment"
+        android:label="Group Details"
+        tools:layout="@layout/fragment_info_member">
+        <argument
+            android:name="groupId"
+            app:argType="long" />
+        <argument
+            android:name="groupName"
+            app:argType="string" />
+        <argument
+            android:name="groupDescription"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_infoFragment_to_MessageFragment"
+            app:destination="@id/MessageFragment" />
+        <action
+            android:id="@+id/action_infoFragment_to_addingMemberFragment"
+            app:destination="@id/addingMemberFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/addingMemberFragment"
+        android:name="com.example.messager.AddingMemberFragment"
+        android:label="Add New Member"
+        tools:layout="@layout/fragment_new_creation">
+        <!-- Other fragment attributes -->
+        <argument
+            android:name="groupId"
+            app:argType="long" />
+        <action
+            android:id="@+id/action_addingMemberFragment_to_infoFragment"
+            app:destination="@id/infoFragment"/>
+    </fragment>
+</navigation>
